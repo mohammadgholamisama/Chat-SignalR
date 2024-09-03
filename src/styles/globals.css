@@ -2,32 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+@keyframes animation-msg {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.pm-animation {
+    animation: animation-msg 0.3s ease-out forwards;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+
+.message-box {
+    background-color: #D4EDDA; /* رنگ پس‌زمینه مشابه سبز روشن */
+    padding: 8px 16px;
+    border-radius: 20px; /* گوشه‌های گرد */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* سایه ملایم */
+    position: relative;
+    display: inline-block;
+    animation: pm-animation 0.3s ease-out; /* انیمیشن */
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.message-box::after {
+    content: '';
+    position: absolute;
+    bottom: -8px; /* مکان قرارگیری انشعاب */
+    left: 10px; /* مکان قرارگیری انشعاب */
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 8px solid #D4EDDA; /* رنگ مشابه باکس */
+}
+
+.timestamp {
+    position: absolute;
+    bottom: 2px;
+    right: 10px;
+    font-size: 0.75rem;
+    color: #6C757D; /* رنگ متنی ملایم */
 }
