@@ -1,14 +1,16 @@
 import Head from "next/head";
-import ChatPage from "./components/extras/ChatPage";
+import Login from "@/components/extras/Login";
+import NotificationManager from "@/components/shared/NotificationManager";
 
 export default function Home() {
 
   return (
     <>
       <Head>
-        <title>Chat Page (مشتری)</title>
+        <title>ورود به حساب کاربری</title>
       </Head>
-      <ChatPage masseurId={'1'} userId={'2'} />
+      <Login />
+      <NotificationManager /> {/* مدیریت نوتیفیکیشن‌ها */}
     </>
   );
 }
